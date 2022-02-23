@@ -64,7 +64,6 @@ export const NetworkPicker = (props: NetworkPickerProps) => {
               <FormControlLabel value={Network.PRATER} control={<Radio />} label={Network.PRATER} />
               <FormControlLabel value={Network.MAINNET} control={<Radio />} label={Network.MAINNET} />
               <FormControlLabel value={Network.GNOSIS} control={<Radio />} label={Network.GNOSIS} />
-              <FormControlLabel value={Network.GNOSIS_TEST} control={<Radio />} label={Network.GNOSIS_TEST} />
             </RadioGroup>
           </FormControl>
         </div>
