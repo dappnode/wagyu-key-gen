@@ -131,12 +131,12 @@ const Home: FC<HomeProps> = (props): ReactElement => {
 
       <LandingHeader variant="h1">Welcome!</LandingHeader>
       <KeyIcon />
-      <SubHeader>Your key generator for Ethereum 2.0</SubHeader>
+      <SubHeader>Your key generator for Ethereum 2.0 and Gnosis (formerly xDai)</SubHeader>
 
       <Links>
         <InfoLabel>Github:</InfoLabel> https://github.com/stake-house/wagyu-key-gen
         <br />
-        <InfoLabel>Support:</InfoLabel> https://discord.io/ethstaker
+        <InfoLabel>Support:</InfoLabel> https://discord.io/dappnode
       </Links>
 
       <OptionsGrid container spacing={2} direction="column">
