@@ -24,6 +24,7 @@ from eth2deposit.utils.ascii_art import RHINO_0
 from eth2deposit.settings import (
     ALL_CHAINS,
     MAINNET,
+    GNOSIS,
     get_chain_setting,
 )
 
@@ -93,8 +94,8 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         click.option(
             '--chain',
-            default=MAINNET,
-            help='The version of eth2 you are targeting. use "mainnet" if you are depositing ETH',
+            default=GNOSIS,
+            help='The version of eth2 you are targeting. use "GNOSIS" if you are depositing GNO',
             prompt='Please choose the (mainnet or testnet) network/chain name',
             type=click.Choice(ALL_CHAINS.keys(), case_sensitive=False),
         ),
@@ -114,6 +115,11 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
                   'withdrawal credentials. Otherwise, it will generate withdrawal credentials with the '
                   'mnemonic-derived withdrawal public key.'),
         ),
+        click.option(
+            '--amount',
+            default=MAX_DEPOSIT_AMOUNT,
+            help=('Amount to use in all deposit data files.'),
+        ),
     ]
     for decorator in reversed(decorators):
         function = decorator(function)
@@ -124,10 +130,10 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
 @click.pass_context
 def generate_keys(ctx: click.Context, validator_start_index: int,
                   num_validators: int, folder: str, chain: str, keystore_password: str,
-                  eth1_withdrawal_address: HexAddress, **kwargs: Any) -> None:
+                  amount: int, eth1_withdrawal_address: HexAddress, **kwargs: Any) -> None:
     mnemonic = ctx.obj['mnemonic']
     mnemonic_password = ctx.obj['mnemonic_password']
-    amounts = [MAX_DEPOSIT_AMOUNT] * num_validators
+    amounts = [amount] * num_validators
     folder = os.path.join(folder, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
     chain_setting = get_chain_setting(chain)
     if not os.path.exists(folder):
