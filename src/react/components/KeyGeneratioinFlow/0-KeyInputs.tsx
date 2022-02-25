@@ -2,6 +2,8 @@ import { Button, Fade, FormControlLabel, Grid, Switch, TextField, Tooltip, Typog
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from "styled-components";
 import { errors, tooltips } from '../../constants';
+import { Network } from '../../types';
+
 
 type GenerateKeysProps = {
   numberOfKeys: number,
