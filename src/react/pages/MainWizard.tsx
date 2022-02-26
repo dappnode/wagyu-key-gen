@@ -65,7 +65,18 @@ const Wizard: FC<WizardProps> = (props): ReactElement => {
   const [withdrawalAddress, setWithdrawalAddress] = useState("");
   const [password, setPassword] = useState("");
   const [folderPath, setFolderPath] = useState("");
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showAdvanced, setShowAdvanced] = () => {
+    if (Network === "gnosis") {
+      useState(true);
+      return;
+    }
+      else {
+      useState(false);
+      return;
+     }
+   }
+     
+        
 
   const stepSequence = stepSequenceMap[stepSequenceKey];
   const activeStepKey = stepSequence[activeStepIndex];
