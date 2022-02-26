@@ -66,7 +66,7 @@ const Wizard: FC<WizardProps> = (props): ReactElement => {
   const [password, setPassword] = useState("");
   const [folderPath, setFolderPath] = useState("");
   const [showAdvanced, setShowAdvanced] = () => {
-    if (Network === "gnosis") {
+    if (network === "Gnosis") {
       useState(true);
       return;
     }
